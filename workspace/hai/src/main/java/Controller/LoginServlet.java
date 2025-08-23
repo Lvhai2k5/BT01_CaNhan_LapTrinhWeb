@@ -14,7 +14,13 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        // Hiển thị form login.html
+        req.getRequestDispatcher("/WEB-INF/login.html").forward(req, resp);
+    }
+
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
@@ -24,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         String user = req.getParameter("username");
         String pass = req.getParameter("password");
 
-        if ("thao".equals(user) && "123".equals(pass)) {
+        if ("LeVuHai".equals(user) && "123456".equals(pass)) {
             // Khởi tạo cookie
             Cookie cookie = new Cookie("username", user);
             // Thiết lập thời gian tồn tại 30s
